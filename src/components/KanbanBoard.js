@@ -1,13 +1,13 @@
-import './App.css'
+import '../App.css'
 
 import React, { Component } from 'react'
 import Board from 'react-trello'
-import CustomCard from "./components/CustomCard";
+import CustomCard from "./CustomCard";
 import axios from "axios"
 import { find, remove } from 'lodash'
 
 
-const data = require('./data.json')
+const data = require('../data.json')
 const ES_URL = 'http://localhost:9200'
 
 const handleDragStart = (cardId, laneId) => {
@@ -23,7 +23,7 @@ const handleDragEnd = (cardId, sourceLaneId, targetLaneId) => {
     console.log(`targetLaneId: ${targetLaneId}`)
 }
 
-class App extends Component {
+class KanbanBoard extends Component {
     state = {
         //boardData: { lanes: [] },
         data: { lanes: [] }
@@ -230,12 +230,6 @@ class App extends Component {
                     <h3>React Trello Demo</h3>
                 </div>
                 <div className="App-intro">
-                    <button onClick={this.completeCard} style={{ margin: 5 }}>
-                        Complete Buy Milk
-                    </button>
-                    <button onClick={this.addCard} style={{ margin: 5 }}>
-                        Add Blocked
-                    </button>
                     <Board
                         editable
                         canAddLanes={true}
@@ -259,4 +253,4 @@ class App extends Component {
     }
 }
 
-export default App
+export default KanbanBoard

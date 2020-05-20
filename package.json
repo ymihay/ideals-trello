@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "antd": "^4.2.4",
+    "axios": "^0.19.2",
     "lodash": "4.17.15",
     "react": "16.13.1",
     "react-dom": "16.13.1",
@@ -11,6 +13,7 @@
     "redux": "4.0.5",
     "redux-actions": "2.6.5",
     "redux-logger": "3.0.6",
+    "rt": "0.0.1",
     "styled-components": "5.0.1"
   },
   "devDependencies": {
