@@ -2,6 +2,10 @@ import { Form, Input, Button, Checkbox } from 'antd';
 import 'antd/dist/antd.css';
 
 import React, { Component } from 'react'
+import { Link } from "react-router-dom";
+import axios from "axios";
+
+const ES_URL = 'http://localhost:9200'
 
 const layout = {
     labelCol: { span: 8 },
@@ -13,8 +17,19 @@ const tailLayout = {
 
 class Registration extends Component {
     render () {
-        const onFinish = values => {
-            console.log('Success:', values);
+        const onFinish = user => {
+            console.log('Success:', user);
+            const url =  `${ES_URL}/trello-users/default`
+            axios
+                .post(url,
+                    user
+                )
+                .then(res => {
+                    console.log(res)
+                })
+                .catch(error => {
+                    console.error(error);
+                });
         };
 
         const onFinishFailed = errorInfo => {
@@ -22,7 +37,7 @@ class Registration extends Component {
         };
 
         return (
-            <div style={{'display': 'flex', 'justify-content': 'center', 'margin-top': '50px'}}>
+            <div style={{ 'display': 'flex', 'justify-content': 'center', 'margin-top': '50px' }}>
                 <Form
                     {...layout}
                     name="basic"
@@ -52,7 +67,9 @@ class Registration extends Component {
 
                     <Form.Item {...tailLayout}>
                         <Button type="primary" htmlType="submit">
-                            Submit
+                            <Link to={'/board'}>
+                                Submit
+                            </Link>
                         </Button>
                     </Form.Item>
                 </Form>
